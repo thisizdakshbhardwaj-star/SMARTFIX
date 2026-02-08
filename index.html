@@ -1,61 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SmartFix Hub | Book Trusted Repairs</title>
-  <style>
-    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#0e0e1a;color:#fff}
-    header{padding:20px 40px;background:#111122;display:flex;justify-content:space-between;align-items:center}
-    header h1{color:#f5b942;margin:0}
-    nav a{color:#fff;margin-left:20px;text-decoration:none;font-weight:600}
-    .hero{padding:80px 20px;text-align:center;background:linear-gradient(135deg,#1f4068,#162447)}
-    .hero h2{font-size:2.5rem;margin-bottom:10px}
-    .hero p{max-width:700px;margin:auto;font-size:1.1rem}
-    section{padding:60px 20px;max-width:1100px;margin:auto}
-    h3.section-title{text-align:center;color:#f5b942;font-size:2rem;margin-bottom:30px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px}
-    .card{background:#1b1b2f;padding:20px;border-radius:10px}
-    .card h4{color:#f5b942}
-    .booking{background:#111122;padding:30px;border-radius:12px}
-    label{display:block;margin-top:15px}
-    select,input{width:100%;padding:10px;margin-top:5px;border-radius:6px;border:none}
-    button{margin-top:20px;padding:12px 20px;background:#f5b942;border:none;border-radius:6px;font-size:1rem;font-weight:bold;cursor:pointer}
-    button:hover{opacity:.9}
-    .result{margin-top:20px;background:#1b1b2f;padding:15px;border-radius:8px;display:none}
-    footer{background:#0b0b14;padding:30px;text-align:center;font-size:.9rem}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SmartFix Hub | Trusted Repairs</title>
+
+<style>
+:root{
+  --bg:#0e0e1a;
+  --card:#1b1b2f;
+  --accent:#f5b942;
+  --muted:#b5b5c5;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  background:var(--bg);
+  color:white;
+  line-height:1.6;
+}
+
+/* ---------- HEADER ---------- */
+header{
+  padding:16px 20px;
+  background:#0b0b16;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+header h1{
+  margin:0;
+  font-size:1.4rem;
+  color:var(--accent);
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:18px;
+  font-weight:600;
+  font-size:.95rem;
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  padding:70px 20px;
+  text-align:center;
+  background:linear-gradient(135deg,#1f4068,#162447);
+}
+
+.hero h2{
+  font-size:clamp(2rem,5vw,2.8rem);
+  margin-bottom:12px;
+}
+
+.hero p{
+  max-width:720px;
+  margin:auto;
+  color:#e5e5f0;
+}
+
+.hero button{
+  margin-top:28px;
+  padding:14px 32px;
+  border:none;
+  border-radius:10px;
+  background:var(--accent);
+  font-size:1.05rem;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* ---------- SECTIONS ---------- */
+section{
+  padding:70px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.section-title{
+  text-align:center;
+  font-size:2rem;
+  margin-bottom:40px;
+  color:var(--accent);
+}
+
+/* ---------- GRID / CARDS ---------- */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:24px;
+}
+
+.card{
+  background:var(--card);
+  padding:26px;
+  border-radius:18px;
+}
+
+.card h4{
+  margin-top:0;
+  color:var(--accent);
+}
+
+/* ---------- BOOKING ---------- */
+.booking{
+  max-width:480px;
+  margin:auto;
+  background:#121224;
+  padding:32px;
+  border-radius:20px;
+}
+
+label{
+  display:block;
+  margin-top:16px;
+  font-weight:600;
+}
+
+select,input{
+  width:100%;
+  padding:12px;
+  margin-top:6px;
+  border-radius:10px;
+  border:none;
+  font-size:1rem;
+}
+
+.booking button{
+  width:100%;
+  margin-top:26px;
+  padding:14px;
+  border:none;
+  border-radius:12px;
+  background:var(--accent);
+  font-size:1.05rem;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.result{
+  display:none;
+  margin-top:24px;
+  background:var(--card);
+  padding:22px;
+  border-radius:16px;
+}
+
+/* ---------- FOOTER ---------- */
+footer{
+  background:#080812;
+  padding:40px 20px;
+  text-align:center;
+  color:var(--muted);
+  font-size:.95rem;
+}
+
+/* ---------- MOBILE OPTIMIZATION ---------- */
+@media(max-width:600px){
+  nav{display:none}
+  header{justify-content:center}
+  .hero{padding:60px 16px}
+  section{padding:60px 16px}
+}
+</style>
 </head>
+
 <body>
 
 <header>
   <h1>SmartFix Hub</h1>
   <nav>
     <a href="#">Home</a>
-    <a href="#book">Book Repair</a>
+    <a href="#book">Book</a>
     <a href="#how">How It Works</a>
-    <a href="#contact">Contact</a>
   </nav>
 </header>
 
 <div class="hero">
-  <h2>Trusted Electronics Repair, Made Simple</h2>
-  <p>Find verified technicians, see repair cost before booking, and get your device repaired at home.</p>
+  <h2>Repair Without the Risk</h2>
+  <p>
+    Find verified technicians, know repair cost beforehand,
+    and get your electronics repaired safely at home.
+  </p>
+  <button onclick="document.getElementById('book').scrollIntoView({behavior:'smooth'})">
+    Book a Repair
+  </button>
 </div>
 
 <section>
   <h3 class="section-title">Why SmartFix Hub?</h3>
   <div class="grid">
-    <div class="card"><h4>Verified Technicians</h4><p>Only background-checked and rated repair experts.</p></div>
-    <div class="card"><h4>Transparent Pricing</h4><p>Know the estimated cost before repair starts.</p></div>
-    <div class="card"><h4>Repair Warranty</h4><p>7–30 days warranty on all repairs.</p></div>
+    <div class="card">
+      <h4>🔒 Verified Technicians</h4>
+      <p>No unknown shops. Only trusted, verified professionals.</p>
+    </div>
+    <div class="card">
+      <h4>💰 Transparent Pricing</h4>
+      <p>Know the repair estimate before you commit.</p>
+    </div>
+    <div class="card">
+      <h4>🛡 Repair Warranty</h4>
+      <p>7–30 days warranty to remove repair anxiety.</p>
+    </div>
   </div>
 </section>
 
 <section id="book">
   <h3 class="section-title">Book a Repair</h3>
+
   <div class="booking">
-    <label>Select Device</label>
+    <label>Device</label>
     <select id="device">
       <option>Phone</option>
       <option>Laptop</option>
@@ -63,7 +222,7 @@
       <option>Fan</option>
     </select>
 
-    <label>Select Problem</label>
+    <label>Problem</label>
     <select id="problem">
       <option>Not Working</option>
       <option>Screen Broken</option>
@@ -71,10 +230,10 @@
       <option>No Display</option>
     </select>
 
-    <label>Your City</label>
-    <input type="text" id="city" placeholder="Enter your city" />
+    <label>City</label>
+    <input id="city" placeholder="Enter your city">
 
-    <button onclick="estimateRepair()">Get Price & Technician</button>
+    <button onclick="estimateRepair()">Check Repair Details</button>
 
     <div class="result" id="result"></div>
   </div>
@@ -83,48 +242,43 @@
 <section id="how">
   <h3 class="section-title">How It Works</h3>
   <div class="grid">
-    <div class="card"><h4>1. Choose Item</h4><p>Select the device you want to repair.</p></div>
-    <div class="card"><h4>2. Select Problem</h4><p>Tell us what's wrong.</p></div>
-    <div class="card"><h4>3. See Price</h4><p>Get an estimated repair cost.</p></div>
-    <div class="card"><h4>4. Get Repaired</h4><p>Home repair or pickup & drop.</p></div>
+    <div class="card"><h4>1️⃣ Choose Device</h4><p>Select what needs repair.</p></div>
+    <div class="card"><h4>2️⃣ Select Issue</h4><p>Tell us the problem.</p></div>
+    <div class="card"><h4>3️⃣ See Price</h4><p>Transparent estimate + technician.</p></div>
+    <div class="card"><h4>4️⃣ Get Repaired</h4><p>Home service or pickup.</p></div>
   </div>
 </section>
 
-<footer id="contact">
+<footer>
   <p><strong>SmartFix Hub</strong></p>
-  <p>Team Jupiter | IT–Twinning | NIET | IMPERIA Tech Fest</p>
-  <p>Before buying new, give repair one chance.</p>
+  <p>Team Jupiter | IT–Twinning | NIET | IMPERIA</p>
+  <p>Building trust before repair.</p>
 </footer>
 
 <script>
-  function estimateRepair(){
-    const device=document.getElementById('device').value;
-    const problem=document.getElementById('problem').value;
-    const city=document.getElementById('city').value;
+function estimateRepair(){
+  const device=document.getElementById('device').value;
+  const problem=document.getElementById('problem').value;
+  const city=document.getElementById('city').value.trim();
 
-    if(city.trim()===''){alert('Please enter your city');return}
+  if(!city){alert("Please enter your city");return;}
 
-    let price=0;
-    if(device==='Phone') price=1200;
-    if(device==='Laptop') price=2000;
-    if(device==='TV') price=1800;
-    if(device==='Fan') price=600;
+  const prices={Phone:1200,Laptop:2000,TV:1800,Fan:600};
+  const techs=["Ravi Kumar","Aman Singh","Suresh Verma"];
+  const tech=techs[Math.floor(Math.random()*techs.length)];
 
-    const tech=['Ravi Kumar','Aman Singh','Suresh Verma'];
-    const assignedTech=tech[Math.floor(Math.random()*tech.length)];
-
-    const result=document.getElementById('result');
-    result.style.display='block';
-    result.innerHTML=`
-      <h4>Repair Details</h4>
-      <p><strong>Device:</strong> ${device}</p>
-      <p><strong>Problem:</strong> ${problem}</p>
-      <p><strong>Estimated Cost:</strong> ₹${price}</p>
-      <p><strong>Technician:</strong> ${assignedTech} (Verified)</p>
-      <p><strong>Service:</strong> Home repair / Pickup & Drop</p>
-      <p><strong>Warranty:</strong> 7–30 Days</p>
-    `;
-  }
+  const result=document.getElementById('result');
+  result.style.display="block";
+  result.innerHTML=`
+    <h4>Repair Summary</h4>
+    <p><strong>Device:</strong> ${device}</p>
+    <p><strong>Issue:</strong> ${problem}</p>
+    <p><strong>City:</strong> ${city}</p>
+    <p><strong>Estimated Cost:</strong> ₹${prices[device]}</p>
+    <p><strong>Technician:</strong> ${tech} (Verified)</p>
+    <p><strong>Warranty:</strong> 7–30 Days</p>
+  `;
+}
 </script>
 
 </body>
